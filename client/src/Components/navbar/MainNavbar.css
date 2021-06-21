@@ -1,0 +1,94 @@
+.navbar {
+    background-color: white !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
+  }
+  
+  .navbar__logo {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+    width: 80px !important;
+  }
+  
+  .navbar__menu {
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+  
+  .navbar__link {
+    color: black !important;
+    text-decoration: none !important;
+  }
+  
+  .navbar__option {
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0 10px 0 10px !important;
+  }
+  
+  .navbar__optionSearch {
+    display: flex !important;
+    align-items: center !important;
+    margin-right: 1rem !important;
+
+  }
+  
+  /* .navbar__BasketCount {
+    margin: 0 10px 0 10px !important;
+  } */
+/*   
+  .navbar__optionLineOne {
+    font-size: 10px !important;
+  } */
+  /* .navbar__optionLineTwo {
+    font-size: 13px !important;
+    font-weight: 800 !important;
+  } */
+  
+  /* .search {
+    position: "relative" !important;
+  
+    margin-left: 0 !important;
+    width: "100%" !important;
+  } */
+  
+  /* .navbar__search {
+    display: flex !important;
+    flex: 1 !important;
+  } */
+  
+  /* .navbar__searchbar {
+    height: 12px !important;
+    padding: 15px !important;
+    width: 100% !important;
+    border: none !important;
+  }
+  input:focus,
+  textarea:focus {
+    outline: none;
+  } */
+  /* .navbar__searchIcon {
+    background-color: #cd9042 !important;
+    padding: 5px !important;
+    height: 30px !important;
+    cursor: pointer;
+  } */
+  
+  /* @media (max-width: 720px) {
+    .hide {
+      display: none;
+    } */
+  
+    /* .navbar__searchIcon {
+      margin-right: 10px;
+    }
+  } */
+
+  .searchbar {
+    color: black;
+    cursor: pointer;
+  }
