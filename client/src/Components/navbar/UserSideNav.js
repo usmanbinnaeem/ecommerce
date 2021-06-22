@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { Layout, Menu } from "antd";
-import {
-  ShoppingCartOutlined,
-  HistoryOutlined,
-  EyeOutlined,
-} from "@ant-design/icons";
+import { HistoryOutlined, EyeOutlined } from "@ant-design/icons";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { Link } from "react-router-dom";
 import "./UserSideNav.css";
 
@@ -29,7 +26,12 @@ const UserSideNav = () => {
       collapsed={collapsed}
       onCollapse={onCollapse}
     >
-      <Menu theme="light" onClick={handleClick} selectedKeys={[current]} mode="inline">
+      <Menu
+        theme="light"
+        onClick={handleClick}
+        selectedKeys={[current]}
+        mode="inline"
+      >
         <Item key="1" icon={<HistoryOutlined />}>
           <Link className="sidebar__link" to="/user/history">
             {" "}
@@ -42,7 +44,7 @@ const UserSideNav = () => {
             Password
           </Link>
         </Item>
-        <Item key="3" icon={<ShoppingCartOutlined />}>
+        <Item key="3" icon={<FavoriteBorderIcon />}>
           <Link className="sidebar__link" to="/user/wishlist">
             {" "}
             Wishlist

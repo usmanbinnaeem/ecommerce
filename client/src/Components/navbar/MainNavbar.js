@@ -58,6 +58,22 @@ const Navbar = () => {
       )}
       {user && (
         <SubMenu key="SubMenu" title={user.name}>
+          {user && user.role === "admin" && (
+            <Item key="adminDashboard">
+              <NavLink className="navbar__link" to="/admin/dashboard">
+                Dashboard
+              </NavLink>
+            </Item>
+          )}
+
+          {user && user.role === "subscriber" && (
+            <Item key="userDashboard">
+              <NavLink className="navbar__link" to="/user/history">
+                Dashboard
+              </NavLink>
+            </Item>
+          )}
+
           <Item key="logout" icon={<ExitToAppIcon />} onClick={logout}>
             Logout
           </Item>
