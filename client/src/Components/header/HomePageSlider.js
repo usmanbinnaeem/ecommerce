@@ -1,6 +1,6 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { css, jsx } from '@emotion/react'
 import SliderContent from './SliderContent'
 import Slide from './Slide'
@@ -36,14 +36,14 @@ const HomePageSlider = props => {
     transitionRef.current = smoothTransition
     resizeRef.current = handleResize
     autoPlayRef.current = props.autoPlay ? nextSlide : null
-  }, [])
+  })
 
   // Reactivate the transition that is removed in smoothTransition.
   useEffect(() => {
     if (transition === 0) setState({ ...state, transition: 0.45 })
   }, [transition, state])
 
-  // AutoPlay Slide
+  // AutoPlay
   useEffect(() => {
     if (props.autoPlay) {
       const play = () => {
@@ -58,14 +58,14 @@ const HomePageSlider = props => {
     }
   }, [props.autoPlay])
 
-  // Smooth transitions
+  // Smooth transitions and browser resizing.
   useEffect(() => {
     const smooth = e => {
       // if (e.target.className.includes('SliderContent')) {
         transitionRef.current()
       // }
     }
-  // Resize browser
+
     const resize = () => {
       resizeRef.current()
     }
@@ -89,12 +89,10 @@ const HomePageSlider = props => {
     // We're at the last slide.
     if (activeSlide === slides.length - 1)
       _slides = [slides[slides.length - 2], lastSlide, firstSlide]
-    // We're back at the first slide.
-    else if (activeSlide === 0) 
-      _slides = [lastSlide, firstSlide, secondSlide]
+    // We're back at the first slide. Just reset to how it was on initial render
+    else if (activeSlide === 0) _slides = [lastSlide, firstSlide, secondSlide]
     // Create an array of the previous last slide, and the next two slides that follow it.
-    else 
-      _slides = slides.slice(activeSlide - 1, activeSlide + 2)
+    else _slides = slides.slice(activeSlide - 1, activeSlide + 2)
 
     setState({
       ...state,
@@ -104,7 +102,15 @@ const HomePageSlider = props => {
     })
   }
 
-  const nextSlide = () => {
+  const hasAutoPlayBeenStopped = e => {
+    if (e && autoPlayRef.current && e.target.className.includes('Arrows')) {
+      props.stopAutoPlay()
+      autoPlayRef.current = null
+    }
+  }
+
+  const nextSlide = e => {
+    hasAutoPlayBeenStopped(e)
 
     setState({
       ...state,
@@ -113,7 +119,8 @@ const HomePageSlider = props => {
     })
   }
 
-  const prevSlide = () => {
+  const prevSlide = e => {
+    hasAutoPlayBeenStopped(e)
 
     setState({
       ...state,
@@ -134,12 +141,8 @@ const HomePageSlider = props => {
         ))}
       </SliderContent>
 
-      {props.autoPlay && (
-        <>
-          <Arrows direction="left" handleClick={prevSlide} />
-          <Arrows direction="right" handleClick={nextSlide} />
-        </>
-      )}
+      <Arrows direction="left" handleClick={prevSlide} />
+      <Arrows direction="right" handleClick={nextSlide} />
 
       <Dots slides={slides} activeSlide={activeSlide} />
     </div>
@@ -148,11 +151,11 @@ const HomePageSlider = props => {
 
 const SliderCSS = css`
   position: relative;
-  height: 90vh;
-  width: 98.7vw;
+  height: 100vh;
+  width: 100vw;
   margin: 0 auto;
   overflow: hidden;
   white-space: nowrap;
 `
 
-export default HomePageSlider
+export default HomePageSlider;

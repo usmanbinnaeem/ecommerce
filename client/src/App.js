@@ -22,7 +22,10 @@ import Wishlist from "./pages/user/Wishlist"
 import NotFound from "./pages/404/NotFound"
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AddCategory from "./pages/admin/category/AddCategory";
+import AddSubCategory from "./pages/admin/subcategory/CreateSubCategory";
 import UpdateCategory from "./pages/admin/category/UpdateCategory";
+import UpdateSubCategory from "./pages/admin/subcategory/UpdateSubCategory";
+import AddProduct from "./pages/admin/product/CreateProduct";
 import AdminRoute from "./Components/routes/AdminRoute"
 import "react-toastify/dist/ReactToastify.css"
 
@@ -73,9 +76,9 @@ function App() {
         <AdminRoute path="/admin/dashboard" element={<AdminDashboard />} />
         <AdminRoute path="/admin/category" element={<AddCategory />} />
         <AdminRoute path="/admin/category/:slug" element={<UpdateCategory />} />
-        <AdminRoute path="/admin/sub-category" element={<AdminDashboard />} />
-        <AdminRoute path="/admin/product" element={<AdminDashboard />} />
-        <AdminRoute path="/admin/products" element={<AdminDashboard />} />
+        <AdminRoute path="/admin/sub-category" element={<AddSubCategory />} />
+        <AdminRoute path="/admin/sub-category/:slug" element={<UpdateSubCategory />} />
+        <AdminRoute path="/admin/product" element={<AddProduct />} />
         <AdminRoute path="/admin/coupon-code" element={<AdminDashboard />} />
         <AdminRoute path="/user/password" element={<AdminDashboard />} />
         <Route path="*" element={<NotFound />} />

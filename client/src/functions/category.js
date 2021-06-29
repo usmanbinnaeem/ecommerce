@@ -12,6 +12,10 @@ export const getCategory = async (slug) => {
   return await axios.get(`${process.env.REACT_APP_API}/category/${slug}`);
 };
 
+export const getSubcategories = async (_id) => {
+  return await axios.get(`${process.env.REACT_APP_API}/category/sub-categories/${_id}`);
+};
+
 export const getCategories = async () => {
   return await axios.get(`${process.env.REACT_APP_API}/categories`);
 };
