@@ -9,8 +9,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-exports.upload = async (req, res) => {
-  let result = await cloudinary.uploader.upload(req.body.image, {
+exports.upload = (req, res) => {
+  let result = cloudinary.uploader.upload(req.body.image, {
     public_id: `${Math.random()}`,
     resource_type: "auto",
   });

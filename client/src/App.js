@@ -26,6 +26,7 @@ import AddSubCategory from "./pages/admin/subcategory/CreateSubCategory";
 import UpdateCategory from "./pages/admin/category/UpdateCategory";
 import UpdateSubCategory from "./pages/admin/subcategory/UpdateSubCategory";
 import AddProduct from "./pages/admin/product/CreateProduct";
+import ListProducts from "./pages/admin/product/ListProducts";
 import AdminRoute from "./Components/routes/AdminRoute"
 import "react-toastify/dist/ReactToastify.css"
 
@@ -79,6 +80,7 @@ function App() {
         <AdminRoute path="/admin/sub-category" element={<AddSubCategory />} />
         <AdminRoute path="/admin/sub-category/:slug" element={<UpdateSubCategory />} />
         <AdminRoute path="/admin/product" element={<AddProduct />} />
+        <AdminRoute path="/admin/products/" element={<ListProducts />} />
         <AdminRoute path="/admin/coupon-code" element={<AdminDashboard />} />
         <AdminRoute path="/user/password" element={<AdminDashboard />} />
         <Route path="*" element={<NotFound />} />
